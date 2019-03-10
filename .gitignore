@@ -1,0 +1,22 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/packages
+/.vs/UpcomingMovies
+/UpcomingMovies.App/UpcomingMovies.App/bin
+/UpcomingMovies.App/UpcomingMovies.App/obj
+/UpcomingMovies.App/UpcomingMovies.App.Android/bin
+/UpcomingMovies.App/UpcomingMovies.App.Android/obj
+/UpcomingMovies.App/UpcomingMovies.App.iOS/bin
+/UpcomingMovies.App/UpcomingMovies.App.iOS/obj
+/UpcomingMovies.App/UpcomingMovies.App.UWP/bin
+/UpcomingMovies.App/UpcomingMovies.App.UWP/obj
+/UpcomingMovies.Application/bin
+/UpcomingMovies.Application/obj
+/UpcomingMovies.Domain/bin
+/UpcomingMovies.Domain/obj
+/UpcomingMovies.Infrastucture/bin
+/UpcomingMovies.Infrastucture/obj
+/UpcomingMovies.Test/bin
+/UpcomingMovies.Test/obj
