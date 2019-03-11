@@ -9,9 +9,13 @@ Despite being Mobile Cross Platform, the application was only tested on Android 
 
 It is "globalized", but only offers the American English and Brazilian Portuguese languages.
 
-- Programming languages: C#, XML/XAML, json.
+###Development Environment:
 
-- Primary Development SDK: Xamarin Forms
+- IDE: Visual Studio 2017
+
+- Primary programming languages: C#, XAML.
+
+- Primary development SDK: Xamarin Forms
 
 - Third party components:
 
