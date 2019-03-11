@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System;
-using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,14 +12,14 @@ namespace UpcomingMovies.Application.Services
     public abstract class ApiClient<TResult> : IApiClient<TResult>
     {
         private HttpClient _restClient;
-        private string _apiUrlBase = "https://api.themoviedb.org/3/movie/";
+        private string _apiUrlBase = "https://api.themoviedb.org/3/movie";
         protected const string _APIKEY = "1f54bd990f1cdfb230adb312546d765d";
 
         public async Task<TResult> GetAsync(string apiRoute, Action<TResult> callback = null, params Parameter []parameters)
         {
             try
             {
-                var json = await GetAsync(apiRoute);
+                var json = await GetAsync(apiRoute, parameters);
                 var data = JsonConvert.DeserializeObject<TResult>(json, GetConverter());
 
                 callback?.Invoke(data);
@@ -44,10 +43,11 @@ namespace UpcomingMovies.Application.Services
                 {
                     url += parameters[i].Name + "=" + parameters[i].Value + "&";
                 }
-
             }
 
-            _restClient = _restClient ?? new HttpClient();
+            url += "api_key=" + _APIKEY;
+
+            _restClient = new HttpClient();
             _restClient.BaseAddress = new Uri(url);
 
             ClearReponseHeaders();
@@ -98,7 +98,7 @@ namespace UpcomingMovies.Application.Services
         {
             var url = _apiUrlBase + "/" + apiRoute;
 
-            _restClient = _restClient ?? new HttpClient();
+            _restClient = new HttpClient();
             _restClient.BaseAddress = new Uri(url);
 
             ClearReponseHeaders();

@@ -4,9 +4,9 @@ using UpcomingMovies.Infrastucture.DataTransfer;
 
 namespace UpcomingMovies.Application.Services
 {
-    public class UpcomingApiClient : ApiClient<Upcoming>, IUpcomingApiClient
+    public class UpcomingApiClient : ApiClient<UpcomigResult>, IUpcomingApiClient
     {
-        public async Task<Upcoming> GetUpcomingPage(string language, int page)
+        public async Task<UpcomigResult> GetUpcomingPage(string language, int page)
         {
             Parameter[] parameters =
                 {

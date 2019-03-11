@@ -5,6 +5,6 @@ namespace UpcomingMovies.Domain.Services
 {
     public interface IUpcomingApiClient
     {
-        Task<Upcoming> GetUpcomingPage(string language, int page);
+        Task<UpcomigResult> GetUpcomingPage(string language, int page);
     }
 }

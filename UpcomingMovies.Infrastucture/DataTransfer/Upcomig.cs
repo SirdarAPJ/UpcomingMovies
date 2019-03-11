@@ -28,6 +28,13 @@ namespace UpcomingMovies.Infrastucture.DataTransfer
         public bool adult { get; set; }
         public string overview { get; set; }
         public string release_date { get; set; }
+        public string uriImage
+        {
+            get
+            {
+                return "https://image.tmdb.org/t/p/w154" + poster_path;
+            }
+        }
     }
 
     public class Dates

@@ -2,10 +2,77 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="UpcomingMovies.App.Views.MainPage"
-             Title="{Binding Title}">
+             xmlns:local="clr-namespace:UpcomingMovies.App.AppResources;assembly=UpcomingMovies.App"
+             xmlns:local2="clr-namespace:UpcomingMovies.App.Behaviors;assembly=UpcomingMovies.App"
+             Title="{local:Translate UpcomigListTitle}">
 
-    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-        <Label Text="Welcome to Xamarin Forms and Prism!" />
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+            Order="Primary" 
+            Icon="Microsoft.png" 
+            Text="{local:Translate PreviousPageButton}"
+            Command="{Binding PreviousCommand}"
+            Priority="0" />
+        <ToolbarItem 
+            Order="Primary" 
+            Icon="Xamarin.png" 
+            Text="{local:Translate NextPageButton}"
+            Command="{Binding NextCommand}"
+            Priority="1" />
+    </ContentPage.ToolbarItems>
+
+    <StackLayout Orientation="Vertical" Padding="5">
+
+        <SearchBar x:Name="SearchBar" 
+               Placeholder="{local:Translate SearchText}" 
+               SearchCommand="{Binding SearchCommand}" 
+               SearchCommandParameter="{Binding Text, Source={x:Reference SearchBar}}"
+               Text="{Binding SearchText, Mode=TwoWay}">
+            <SearchBar.Behaviors>
+                <local2:TextChangedBehavior />
+            </SearchBar.Behaviors>
+        </SearchBar>
+
+        <ListView 
+            ItemsSource="{Binding UpcomingMovies}" 
+            SelectedItem="{Binding SelectedItem}"
+            BackgroundColor="WhiteSmoke" 
+            HasUnevenRows="true" 
+            SelectionMode="None">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout 
+                            Orientation="Horizontal" 
+                            HorizontalOptions="FillAndExpand" 
+                            Margin="5" HeightRequest="120">
+                            <Image Source="{Binding uriImage}" />
+                            <StackLayout 
+                                HorizontalOptions="FillAndExpand">
+                                <Label Text="{Binding title}" FontSize="Medium" FontAttributes="Bold" />
+                                <Label Text="{Binding original_title}" FontSize="Micro" FontAttributes="Italic" />
+                                <StackLayout 
+                                    Orientation="Horizontal" 
+                                    HorizontalOptions="EndAndExpand"
+                                    >
+                                    <Label Text="{local:Translate ReleaseDate}" FontSize="Micro" FontAttributes="Bold,Italic" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                    <Label Text="{Binding release_date}" FontSize="Micro" FontAttributes="Italic" HorizontalOptions="End"/>
+                                </StackLayout>
+                            </StackLayout>                            
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <StackLayout
+            BackgroundColor="AliceBlue"
+            HorizontalOptions="FillAndExpand">
+            <Label 
+                Text="{Binding Pagination}"
+                FontAttributes="Bold"
+                HorizontalOptions="Center" />
+        </StackLayout>
+        
     </StackLayout>
-
 </ContentPage>
