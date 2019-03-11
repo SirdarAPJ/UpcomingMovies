@@ -3,7 +3,7 @@
 
 I focused my attention on the construction of a basic but scalable and decoupled architecture based on the Onion concept and some reference to the DDD, using some of the most relevant design patterns and development practices such as Clean Code, Fluent Code, MVVM , etc.
 
-So do not expect to see an application with amazing color palette and icons library (by the way, I did not create any icon for the application)
+So do not expect to see an application with amazings color palette and icons library (by the way, I did not create any icon for the application)
 
 Despite being Mobile Cross Platform, the application was only tested on Android device / emulator and Windows 10.
 
