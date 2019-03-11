@@ -1,25 +1,51 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"            
-             x:Class="UpcomingMovies.App.Views.MovieDetailPage">
+             x:Class="UpcomingMovies.App.Views.MovieDetailPage"
+             xmlns:local="clr-namespace:UpcomingMovies.App.AppResources;assembly=UpcomingMovies.App"
+             Title="{local:Translate MovieDetailTitle}">
     
     <ContentPage.Content>
-        <StackLayout
-              HorizontalOptions="FillAndExpand"
-              VerticalOptions="FillAndExpand"
-              BackgroundColor="Black">
-            <Image 
-                Source="{Binding UriBackdropImage}"
-                VerticalOptions="FillAndExpand"
-                HorizontalOptions="FillAndExpand"/>
-            <Label
-                Text="{Binding Overview}"
-                VerticalOptions="FillAndExpand"
-                VerticalTextAlignment="Start"
-                HorizontalTextAlignment="Start"
-                TextColor="WhiteSmoke"
-                FontSize="Medium">
-            </Label>
-        </StackLayout>
+        <ScrollView
+            HorizontalScrollBarVisibility="Never"
+            VerticalScrollBarVisibility="Default">
+            <StackLayout
+                  HorizontalOptions="FillAndExpand"
+                  VerticalOptions="FillAndExpand"
+                  BackgroundColor="Black">
+                <Image 
+                    Source="{Binding UriBackdropImage}"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand"/>
+                <Label
+                    Text="{Binding Overview}"
+                    VerticalOptions="FillAndExpand"
+                    VerticalTextAlignment="Start"
+                    HorizontalTextAlignment="Start"
+                    TextColor="WhiteSmoke"
+                    FontSize="Medium" />
+                <StackLayout
+                    Orientation="Horizontal"
+                    VerticalOptions="FillAndExpand">
+                    <Label
+                        Text="{local:Translate Genres}"
+                        VerticalOptions="FillAndExpand"
+                        VerticalTextAlignment="Start"
+                        HorizontalTextAlignment="Start"
+                        TextColor="WhiteSmoke"
+                        FontSize="Small"
+                        FontAttributes="Bold,Italic" />
+                    <Label
+                        Text="{Binding Genres}"
+                        VerticalOptions="FillAndExpand"
+                        VerticalTextAlignment="Start"
+                        HorizontalTextAlignment="Start"
+                        TextColor="WhiteSmoke"
+                        FontSize="Small" 
+                        FontAttributes="Italic" />
+                </StackLayout>
+            </StackLayout>
+            
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

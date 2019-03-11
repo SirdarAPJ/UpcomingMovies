@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Unity;
 using UpcomingMovies.Application.Services;
 using UpcomingMovies.Domain.Services;
