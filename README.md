@@ -9,7 +9,7 @@ Despite being Mobile Cross Platform, the application was only tested on Android 
 
 It is "globalized", but only offers the American English and Brazilian Portuguese languages.
 
-### Development Environment:
+## Development Environment:
 
 - IDE: Visual Studio 2017
 
