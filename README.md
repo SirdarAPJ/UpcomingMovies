@@ -1,4 +1,4 @@
-# Upcoming Movies
+# Upcoming Movies App
 Upcoming movies list and details from TMDb
 
 I focused my attention on the construction of a basic but scalable and decoupled architecture based on the Onion concept and some reference to the DDD, using some of the most relevant design patterns and development practices such as Clean Code, Fluent Code, MVVM , etc.
