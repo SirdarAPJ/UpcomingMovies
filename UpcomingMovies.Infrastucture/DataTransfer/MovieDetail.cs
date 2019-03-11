@@ -30,7 +30,7 @@ namespace UpcomingMovies.Infrastucture.DataTransfer
         public string tagline { get; set; }
         public string title { get; set; }
         public bool video { get; set; }
-        public int vote_average { get; set; }
+        public decimal vote_average { get; set; }
         public int vote_count { get; set; }
     }
 

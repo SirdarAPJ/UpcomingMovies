@@ -4,9 +4,9 @@ using Xamarin.Forms.Xaml;
 namespace UpcomingMovies.App.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MainPage : ContentPage
+    public partial class MovieDetailPage : ContentPage
     {
-        public MainPage()
+        public MovieDetailPage()
         {
             InitializeComponent();
         }

@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using UpcomingMovies.App.Views;
 using UpcomingMovies.Domain.Services;
 using UpcomingMovies.Infrastucture.DataTransfer;
 using Xamarin.Forms;
@@ -17,9 +18,13 @@ namespace UpcomingMovies.App.ViewModels
         private ICommand _searchCommand;
         private ICommand _previousCommand;
         private ICommand _nextCommand;
+        private ICommand _itemSelectedCommand;
+
         private int _currentPage = 1;
         private int _totalPages;
         private string _pagination;
+
+        private readonly IUpcomingApiClient _upcomingApiClient;
 
         public int CurrentPage
         {
@@ -36,9 +41,7 @@ namespace UpcomingMovies.App.ViewModels
         {
             get { return _upcomingMovies; }
             set { SetProperty(ref _upcomingMovies, value); }
-        }
-
-        private readonly IUpcomingApiClient _upcomingApiClient; 
+        }      
 
         public MainPageViewModel(INavigationService navigationService,
                                  IUpcomingApiClient upcomingApiClient)
@@ -102,6 +105,15 @@ namespace UpcomingMovies.App.ViewModels
 
         }));
 
-        
+        public ICommand ItemSelectedCommand => _itemSelectedCommand ?? (_itemSelectedCommand = new Command<ItemTappedEventArgs>(async (parameter) =>
+        {
+            var navParameters = new NavigationParameters();
+            navParameters.Add("movieId", ((Upcoming)parameter.Item).id);
+
+            await NavigationService.NavigateAsync(nameof(MovieDetailPage), navParameters);
+
+        }));
+
+
     }
 }

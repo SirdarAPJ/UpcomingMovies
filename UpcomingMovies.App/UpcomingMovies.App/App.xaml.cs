@@ -40,12 +40,17 @@ namespace UpcomingMovies.App
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
+
+            #region View > ViewModel
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
+            containerRegistry.RegisterForNavigation<MovieDetailPage, MovieDetailViewModel>();
+            #endregion
 
-            //Services
+            #region Services
             containerRegistry.Register<IUpcomingApiClient, UpcomingApiClient>();
-            containerRegistry.Register<IMovieDetailApiClient, MovieDetailApiClient>();
+            containerRegistry.Register<IMovieDetailApiClient, MovieDetailApiClient>(); 
+            #endregion
         }
     }
 }
