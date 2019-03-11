@@ -1,6 +1,25 @@
 # Upcoming Movies
 Upcoming movies list and details from TMDb
 
-Upcoming Movies App is being developed as a challenge proposed by ArcTouch. This challenge is one step of the company selection process.
+I focused my attention on the construction of a basic but scalable and decoupled architecture based on the Onion concept and some reference to the DDD, using some of the most relevant design patterns and development practices such as Clean Code, Fluent Code, MVVM , etc.
 
-It is developed in Xamarin.forms and uses the following third-party components:
+So do not expect to see an application with amazing color palette and icons library (by the way, I did not create any icon for the application)
+
+Despite being Mobile Cross Platform, the application was only tested on Android device / emulator and Windows 10.
+
+It is "globalized", but only offers the American English and Brazilian Portuguese languages.
+
+
+Programming languages: C#, XML/XAML, json.
+
+
+Primary Development SDK: Xamarin Forms
+
+
+Third party components:
+
+- Newtonsoft Json: indispensable in the object serialization and deserialization processes and manipulation of json files;
+
+- Prism: includes dependency injection functionality, event aggregation and "page routing", streamlining and facilitating the MVVM development process;
+
+- Unity: dependency container used by Prism. I'm also using it directly on some solution layers.
