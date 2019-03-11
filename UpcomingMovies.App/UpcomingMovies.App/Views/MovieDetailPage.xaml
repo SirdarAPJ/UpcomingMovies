@@ -34,15 +34,14 @@
                         HorizontalTextAlignment="Start"
                         TextColor="WhiteSmoke"
                         FontSize="Small"
-                        FontAttributes="Bold,Italic" />
+                        FontAttributes="Bold" />
                     <Label
                         Text="{Binding Genres}"
                         VerticalOptions="FillAndExpand"
                         VerticalTextAlignment="Start"
                         HorizontalTextAlignment="Start"
                         TextColor="WhiteSmoke"
-                        FontSize="Small" 
-                        FontAttributes="Italic" />
+                        FontSize="Small" />
                 </StackLayout>
             </StackLayout>
             

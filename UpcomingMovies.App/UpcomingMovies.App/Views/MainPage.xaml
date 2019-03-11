@@ -26,7 +26,7 @@
             Priority="1" />
     </ContentPage.ToolbarItems>
 
-    <StackLayout Orientation="Vertical" Padding="5">
+    <StackLayout Padding="5">
 
         <SearchBar x:Name="SearchBar" 
                Placeholder="{local:Translate SearchText}" 
@@ -41,7 +41,6 @@
         <ListView 
             ItemsSource="{Binding UpcomingMovies}" 
             SelectedItem="{Binding SelectedItem}"
-            BackgroundColor="WhiteSmoke" 
             HasUnevenRows="true"
             CachingStrategy="RecycleElement"
             SelectionMode="None">
@@ -51,18 +50,30 @@
                         <StackLayout 
                             Orientation="Horizontal" 
                             HorizontalOptions="FillAndExpand" 
-                            Margin="2" HeightRequest="110">
+                            Margin="2">
+                            <StackLayout.HeightRequest>
+                                <OnPlatform x:TypeArguments="x:Double">
+                                    <On Platform="UWP" Value="120" />
+                                    <On Platform="Android,iOS" Value="90" />
+                                </OnPlatform>
+                            </StackLayout.HeightRequest>
                             <Image Source="{Binding uriImage}" />
                             <StackLayout 
                                 HorizontalOptions="FillAndExpand">
                                 <Label Text="{Binding title}" FontSize="Medium" FontAttributes="Bold" />
                                 <Label Text="{Binding original_title}" FontSize="Micro" FontAttributes="Italic" />
                                 <StackLayout 
-                                    Orientation="Horizontal" 
-                                    HorizontalOptions="EndAndExpand"
-                                    >
-                                    <Label Text="{local:Translate ReleaseDate}" FontSize="Micro" FontAttributes="Bold,Italic" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                    <Label Text="{Binding release_date, Converter={StaticResource StringToDateValueConverter}}" FontSize="Micro" FontAttributes="Italic" HorizontalOptions="End"/>
+                                    Orientation="Horizontal"
+                                    VerticalOptions="EndAndExpand"
+                                    HorizontalOptions="EndAndExpand">
+                                    <Label 
+                                        Text="{local:Translate ReleaseDate}" 
+                                        FontSize="Micro" FontAttributes="Bold" 
+                                        HorizontalOptions="EndAndExpand" 
+                                        HorizontalTextAlignment="End"/>
+                                    <Label Text="{Binding release_date, Converter={StaticResource StringToDateValueConverter}}" 
+                                           FontSize="Micro" 
+                                           HorizontalOptions="End"/>
                                 </StackLayout>
                             </StackLayout>                            
                         </StackLayout>
@@ -77,11 +88,9 @@
         </ListView>
 
         <StackLayout
-            BackgroundColor="AliceBlue"
             HorizontalOptions="FillAndExpand">
             <Label 
                 Text="{Binding Pagination}"
-                FontAttributes="Bold"
                 HorizontalOptions="Center" />
         </StackLayout>
         
