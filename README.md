@@ -15,9 +15,9 @@ The application has content in American English and Brazilian Portuguese, accord
 
 - IDE: Visual Studio 2017
 
-- Primary programming languages: C#, XAML.
+- Key programming languages: C#, XAML.
 
-- Primary development SDK: Xamarin Forms
+- Main development SDK: Xamarin Forms
 
 - Third party components:
 
