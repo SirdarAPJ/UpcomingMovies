@@ -24,3 +24,8 @@ The application has content in American English and Brazilian Portuguese, accord
   - Newtonsoft Json: indispensable in the object serialization and deserialization processes and manipulation of json files;
   - Prism: includes dependency injection functionality, event aggregation and "page routing", streamlining and facilitating the MVVM    development process;
   - Unity: dependency container used by Prism. I'm also using it directly on some solution layers.
+
+## Screenshots
+
+
+<img align="left" width="300" src="/Screenshots/Screenshot_20190311-204415.jpg">   <img align="left" width="300" src="/Screenshots/Screenshot_20190311-204702.jpg"></div>
