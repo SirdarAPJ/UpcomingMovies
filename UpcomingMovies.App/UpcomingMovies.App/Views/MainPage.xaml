@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="UpcomingMovies.App.Views.MainPage"
+             xmlns:local="clr-namespace:UpcomingMovies.App.AppResources;assembly=UpcomingMovies.App"
+             xmlns:behaviors="clr-namespace:UpcomingMovies.App.Behaviors;assembly=UpcomingMovies.App"
+             xmlns:converter="clr-namespace:UpcomingMovies.App.ValueConverters;assembly=UpcomingMovies.App"
+             Title="{local:Translate UpcomigListTitle}">
+
+    <ContentPage.Resources>
+        <converter:StringToDateValueConverter x:Key="StringToDateValueConverter"/>
+    </ContentPage.Resources>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+            Order="Primary" 
+            Icon="Microsoft.png" 
+            Text="{local:Translate PreviousPageButton}"
+            Command="{Binding PreviousCommand}"
+            Priority="0" />
+        <ToolbarItem 
+            Order="Primary" 
+            Icon="Xamarin.png" 
+            Text="{local:Translate NextPageButton}"
+            Command="{Binding NextCommand}"
+            Priority="1" />
+    </ContentPage.ToolbarItems>
+
+    <StackLayout Padding="5">
+
+        <SearchBar x:Name="SearchBar" 
+               Placeholder="{local:Translate SearchText}" 
+               SearchCommand="{Binding SearchCommand}" 
+               SearchCommandParameter="{Binding Text, Source={x:Reference SearchBar}}"
+               Text="{Binding SearchText, Mode=TwoWay}">
+            <SearchBar.Behaviors>
+                <behaviors:TextChangedBehavior />
+            </SearchBar.Behaviors>
+        </SearchBar>
+
+        <ListView 
+            ItemsSource="{Binding UpcomingMovies}" 
+            SelectedItem="{Binding SelectedItem}"
+            HasUnevenRows="true"
+            CachingStrategy="RecycleElement"
+            SelectionMode="None">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout 
+                            Orientation="Horizontal" 
+                            HorizontalOptions="FillAndExpand" 
+                            Margin="2">
+                            <StackLayout.HeightRequest>
+                                <OnPlatform x:TypeArguments="x:Double">
+                                    <On Platform="UWP" Value="120" />
+                                    <On Platform="Android,iOS" Value="90" />
+                                </OnPlatform>
+                            </StackLayout.HeightRequest>
+                            <Image Source="{Binding uriImage}" />
+                            <StackLayout 
+                                HorizontalOptions="FillAndExpand">
+                                <Label Text="{Binding title}" FontSize="Medium" FontAttributes="Bold" />
+                                <Label Text="{Binding original_title}" FontSize="Micro" FontAttributes="Italic" />
+                                <StackLayout 
+                                    Orientation="Horizontal"
+                                    VerticalOptions="EndAndExpand"
+                                    HorizontalOptions="EndAndExpand">
+                                    <Label 
+                                        Text="{local:Translate ReleaseDate}" 
+                                        FontSize="Micro" FontAttributes="Bold" 
+                                        HorizontalOptions="EndAndExpand" 
+                                        HorizontalTextAlignment="End"/>
+                                    <Label Text="{Binding release_date, Converter={StaticResource StringToDateValueConverter}}" 
+                                           FontSize="Micro" 
+                                           HorizontalOptions="End"/>
+                                </StackLayout>
+                            </StackLayout>                            
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.Behaviors>
+                <behaviors:EventToCommandBehavior Command="{Binding ItemSelectedCommand}"
+                                                  EventName="ItemTapped"
+                                                  CommandParameter="{Binding .}"/>
+            </ListView.Behaviors>
+        </ListView>
+
+        <StackLayout
+            HorizontalOptions="FillAndExpand">
+            <Label 
+                Text="{Binding Pagination}"
+                HorizontalOptions="Center" />
+        </StackLayout>
+        
+    </StackLayout>
+</ContentPage>
